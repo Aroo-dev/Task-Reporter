@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Task {
 
     private Long id;
-    private static Long counter ;
+    private static Long counter = 0L;
     private String taskName;
     private LocalDateTime startTask;
     private LocalDateTime stopTask;
@@ -78,5 +78,6 @@ public class Task {
 //            this.startTask = null;
 //        }
 //    }
+
 
 }

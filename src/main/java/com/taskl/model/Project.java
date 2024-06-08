@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-    private static Long id;
+    private static Long id =0L;
     private String name;
     private List<Task> tasks = new ArrayList<>();
 
@@ -37,6 +37,8 @@ public class Project {
 
     public void addTask(Task task) {
         tasks.add(task);
+
+
     }
 }
 

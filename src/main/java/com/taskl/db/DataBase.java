@@ -35,6 +35,11 @@ public class DataBase {
         this.projects = projects;
     }
 
+
+    public Optional<Project> getProjectByName(String name) {
+        return projects.stream().filter(p -> p.getName().equalsIgnoreCase(name)).findFirst();
+    }
+
     @Override
     public String toString() {
         return "DataBase{" +
