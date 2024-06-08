@@ -1,11 +1,11 @@
-package com.taskl.report;
-
+package com.task.report;
 
 import com.task.model.Project;
 import com.task.model.Task;
 
 import java.util.List;
 import java.util.TreeMap;
+import java.time.Duration;
 
 public class Report {
 

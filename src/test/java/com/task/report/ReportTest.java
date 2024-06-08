@@ -1,17 +1,13 @@
-package com.taskl.report;
+package com.task.report;
 
-import com.taskl.model.Project;
-import com.taskl.model.Task;
+import com.task.model.Project;
+import com.task.model.Task;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ReportTest {
 
