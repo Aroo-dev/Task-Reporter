@@ -1,11 +1,11 @@
-package com.taskl.model;
+package com.task.model;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-    private static Long id =0L;
+    private static Long id = 0L;
     private String name;
     private List<Task> tasks = new ArrayList<>();
 
@@ -37,7 +37,6 @@ public class Project {
 
     public void addTask(Task task) {
         tasks.add(task);
-
 
     }
 }

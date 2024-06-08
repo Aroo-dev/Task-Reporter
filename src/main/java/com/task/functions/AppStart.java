@@ -1,8 +1,8 @@
-package com.taskl.functions;
+package com.task.functions;
 
-import com.taskl.db.DataBase;
-import com.taskl.model.Project;
-import com.taskl.model.Task;
+import com.task.db.DataBase;
+import com.task.model.Project;
+import com.task.model.Task;
 
 public class AppStart {
 
@@ -27,6 +27,7 @@ public class AppStart {
     private Project getProject(String projectName) {
         return dataBase.getProjectByName(projectName).orElse(null);
     }
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.taskl.model;
+package com.task.model;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ public class Task {
     private LocalDateTime stopTask;
     private Duration totalTime;
 
-    public Task( String taskName) {
+    public Task(String taskName) {
 
         this.taskName = taskName;
         this.startTask = LocalDateTime.now();
@@ -52,8 +52,8 @@ public class Task {
         return counter;
     }
 
-    public static Long getId() {
-        return counter;
+    public Long getId() {
+        return id;
     }
 
     public String getTaskName() {
@@ -71,13 +71,13 @@ public class Task {
     public Duration getTotalTime() {
         return totalTime;
     }
-//    public void stop() {
-//        if (this.startTask != null) {
-//            this.stopTask = LocalDateTime.now();
-//            this.totalTime = this.totalTime.plus(Duration.between(this.startTask, this.stopTask));
-//            this.startTask = null;
-//        }
-//    }
+    public void stop() {
+        if (this.startTask != null) {
+            this.stopTask = LocalDateTime.now();
+            this.totalTime = this.totalTime.plus(Duration.between(this.startTask, this.stopTask));
+            this.startTask = null;
+        }
+    }
 
 
 }
