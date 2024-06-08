@@ -40,5 +40,12 @@ public class Project {
     public void addTask(Task task) {
         tasks.add(task);
     }
+
+    @Override
+    public String toString() {
+        return "Project: "
+                + "id = " + id
+                + ", name = " + name;
+    }
 }
 

@@ -11,29 +11,35 @@ import java.util.List;
 
 public class Report {
 
-    public static List<Project> setUp(){
-        List<Project> projectList = new ArrayList<>();
-
-        Project project1 = new Project(1L, "Project1");
-        Project project2 = new Project(2L, "Project2");
-
-        Task task1Project1 = new Task("Project 1 Task 1");
-        task1Project1.setStopTask(LocalDateTime.of(2024, Month.JUNE, 8, 17, 10));
-        task1Project1.setTotalTime(Duration.between(task1Project1.getStartTask(), task1Project1.getStopTask()));
-
-        Task task2project1 = new Task("Project 1 Task 2");
-        task2project1.setStopTask(LocalDateTime.of(2024, Month.JUNE, 8, 18, 10));
-        task2project1.setTotalTime(Duration.between(task2project1.getStartTask(), task2project1.getStopTask()));
-
-        Task task3Project1 = new Task("Project 1 Task 3");
-        task3Project1.setStopTask(LocalDateTime.of(2024, Month.JUNE, 8, 19, 20));
-
-        return projectList;
+    public static void printReportALL(List<Project> projectList) {
+        System.out.println("---------Report for all projects---------");
+        for (Project project : projectList) {
+            System.out.println(project);
+            for (Task task : project.getTasks()) {
+                System.out.println(task);
+            }
+        }
     }
 
-    public static void main(String[] args) {
-        List<Project> projectList = setUp();
+    public static void printReportProject(List<Project> projectList, String projectName) {
+        Boolean isPresent;
 
-        projectList.forEach(System.out::println);
+        isPresent = projectList
+                .stream()
+                .anyMatch(project -> project.getName().equals(projectName));
+
+        if (!isPresent) {
+            System.out.println("Error. " + projectName + " doesn't exist");
+        } else {
+            System.out.println("---------Report for " + projectName + " project---------");
+            Project project = projectList
+                    .stream()
+                    .filter(entry -> entry.getName().equals(projectName))
+                    .findFirst()
+                    .get();
+
+            System.out.println(project);
+            project.getTasks().forEach(System.out::println);
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.taskl.model;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Task {
 
@@ -79,4 +80,23 @@ public class Task {
 //        }
 //    }
 
+    private String DurationFormatter(Duration duration) {
+        long seconds = duration.getSeconds();
+        long HH = seconds / 3600;
+        long MM = (seconds % 3600) / 60;
+        long SS = seconds % 60;
+
+        return HH + ":" + MM + ":" + SS;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Task:"
+                + " id = " + id
+                + " Task Name = " + taskName
+                + ", Start time of Task = " + startTask.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+                + ", Stop time of Task = " + stopTask.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
+                + ", Total time = " + DurationFormatter(totalTime);
+    }
 }
