@@ -20,34 +20,49 @@ class ReportTest {
     static void setUp(){
         Project project1 = new Project("Project1");
 
-        Task task1Project1 = new Task("Project 1 Task 1");
-        task1Project1.setStopTask(LocalDateTime.of(2024, Month.JUNE, 10, 17, 10));
-        task1Project1.setTotalTime(Duration.between(task1Project1.getStartTask(), task1Project1.getStopTask()));
+        Task project1Task1 = new Task("Project 1 Task 1");
+        project1Task1.setTotalTime(Duration.ofMinutes(10));
 
-        Task task2project1 = new Task("Project 1 Task 2");
-        task2project1.setStopTask(LocalDateTime.of(2024, Month.JUNE, 10, 18, 10));
-        task2project1.setTotalTime(Duration.between(task2project1.getStartTask(), task2project1.getStopTask()));
+        Task project1Task2 = new Task("Project 1 Task 2");
+        project1Task2.setTotalTime(Duration.ofMinutes(20));
 
-        Task task3Project1 = new Task("Project 1 Task 3");
-        task3Project1.setStopTask(LocalDateTime.of(2024, Month.JUNE, 10, 19, 20));
-        task3Project1.setTotalTime(Duration.between(task3Project1.getStartTask(), task3Project1.getStopTask()));
+        Task project1Task3 = new Task("Project 1 Task 3");
+        project1Task3.setTotalTime(Duration.ofMinutes(30));
 
-        project1.addTask(task1Project1);
-        project1.addTask(task2project1);
-        project1.addTask(task3Project1);
+        Task project1Task4 = new Task("Project 1 Task 1");
+        project1Task4.setTotalTime(Duration.ofMinutes(10));
+
+        Task project1Task5 = new Task("Project 1 Task 2");
+        project1Task5.setTotalTime(Duration.ofMinutes(20));
+
+        Task project1Task6 = new Task("Project 1 Task 3");
+        project1Task6.setTotalTime(Duration.ofMinutes(30));
+
+        project1.addTask(project1Task1);
+        project1.addTask(project1Task2);
+        project1.addTask(project1Task3);
+        project1.addTask(project1Task4);
+        project1.addTask(project1Task5);
+        project1.addTask(project1Task6);
 
         Project project2 = new Project("Project2");
 
-        Task task1Project2 = new Task("Project 2 Task 1");
-        task1Project2.setStopTask(LocalDateTime.of(2024, Month.JUNE, 10, 17, 10));
-        task1Project2.setTotalTime(Duration.between(task1Project2.getStartTask(), task1Project2.getStopTask()));
+        Task project2Task1 = new Task("Project 2 Task 1");
+        project2Task1.setTotalTime(Duration.ofMinutes(120));
 
-        Task task2Project2 = new Task("Project 2 Task 2");
-        task2Project2.setStopTask(LocalDateTime.of(2024, Month.JUNE, 10, 14, 10));
-        task2Project2.setTotalTime(Duration.between(task2Project2.getStartTask(), task2Project2.getStopTask()));
+        Task project2Task2 = new Task("Project 2 Task 2");
+        project2Task2.setTotalTime(Duration.ofMinutes(30));
 
-        project2.addTask(task1Project2);
-        project2.addTask(task2Project2);
+        Task project2Task3 = new Task("Project 2 Task 2");
+        project2Task3.setTotalTime(Duration.ofMinutes(30));
+
+        Task project2Task4 = new Task("Project 2 Task 2");
+        project2Task4.setTotalTime(Duration.ofMinutes(30));
+
+        project2.addTask(project2Task1);
+        project2.addTask(project2Task2);
+        project2.addTask(project2Task3);
+        project2.addTask(project2Task4);
 
         projectList.add(project1);
         projectList.add(project2);
