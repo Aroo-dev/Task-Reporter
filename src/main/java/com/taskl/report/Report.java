@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Report {
 
+
     public static void printReportALL(List<Project> projectList) {
         System.out.println("---------Report for all projects---------");
         for (Project project : projectList) {
