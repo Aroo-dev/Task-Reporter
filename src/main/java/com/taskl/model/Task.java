@@ -7,7 +7,8 @@ import java.time.format.DateTimeFormatter;
 public class Task {
 
     private Long id;
-    private static Long counter = 0L ;
+
+    private static Long counter = 0L;
     private String taskName;
     private LocalDateTime startTask;
     private LocalDateTime stopTask;
@@ -79,7 +80,6 @@ public class Task {
 //            this.startTask = null;
 //        }
 //    }
-
     private String DurationFormatter(Duration duration) {
         long seconds = duration.getSeconds();
         long HH = seconds / 3600;
