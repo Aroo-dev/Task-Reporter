@@ -35,7 +35,7 @@ public class Reader {
 
         lastTask.setTaskName(taskName);
         lastTask.setProjectName(projectName);
-        lastTask.setClose(isClose);
+        lastTask.setIsClosed(isClose);
         lastTask.setStartTask(startTask);
         lastTask.setStopTask(stopTask);
         lastTask.setTotalTime(totalTime);
@@ -63,7 +63,7 @@ public class Reader {
             Task task = new Task();
             task.setTaskName(taskName);
             task.setProjectName(projectName);
-            task.setClose(isClose);
+            task.setIsClosed(isClose);
             task.setStartTask(startTask);
             task.setStopTask(stopTask);
             task.setTotalTime(totalTime);

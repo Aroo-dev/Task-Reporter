@@ -6,8 +6,7 @@ import java.time.LocalDateTime;
 public class Task {
     private String taskName;
 
-
-
+    private boolean isClosed;
     private String projectName;
     private LocalDateTime startTask;
     private LocalDateTime stopTask;
@@ -19,6 +18,7 @@ public class Task {
         this.projectName = projectName;
         this.startTask = LocalDateTime.now();
         totalTime = Duration.ZERO;
+        this.isClosed = false;
     }
 
     public Task() {
@@ -46,6 +46,14 @@ public class Task {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public boolean isClosed() {
+        return isClosed;
+    }
+
+    public void setIsClosed(boolean closed) {
+        isClosed = closed;
     }
 
     public String getTaskName() {
