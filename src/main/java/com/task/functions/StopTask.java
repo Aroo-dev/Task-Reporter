@@ -18,7 +18,7 @@ public class StopTask {
 
         Task lastTask = Reader.getLast(file);
         if (lastTask == null){
-            throw  new RuntimeException("There's no task to be closed");
+            System.out.println("There's no task to be closed");;
         }if(lastTask.isClosed()){
             System.out.println("The current task is already stopped");
         }else {
