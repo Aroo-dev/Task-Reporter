@@ -5,7 +5,7 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
 
-@CommandLine.Command(name = "app", subcommands = {App.Start.class, App.Stop.class, App.List.class, App.Continue.class, App.Last.class,
+@Command(name = "app", subcommands = {App.Start.class, App.Stop.class, App.List.class, App.Continue.class, App.Last.class,
         App.Current.class, App.Help.class}, separator = " ")
 public class App implements Runnable {
 
