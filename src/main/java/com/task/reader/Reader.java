@@ -90,13 +90,6 @@ public class Reader {
 
         }
 
-        for (Project project : projectList) {
-            System.out.println(project);
-            for (Task task : project.getTasks())  {
-                System.out.println(task);
-            }
-        }
-
         return projectList;
     }
 
