@@ -97,4 +97,34 @@ public class Reader {
         return projectList;
     }
 
+    public static List<Task> getAllTasks(File file) throws IOException, InvalidFormatException {
+        List<Task> taskList = new ArrayList<>();
+
+        Workbook workbook = new XSSFWorkbook(file);
+        Sheet sheet = workbook.getSheetAt(0);
+        DataFormatter dataFormatter = new DataFormatter();
+        for (int n = 1; n < sheet.getPhysicalNumberOfRows(); n++) {
+            Row row = sheet.getRow(n);
+            int i = row.getFirstCellNum();
+
+            String projectName = dataFormatter.formatCellValue(row.getCell(++i));
+            String taskName = dataFormatter.formatCellValue(row.getCell(++i));
+            Boolean isClose = row.getCell(++i).getBooleanCellValue();
+            LocalDateTime startTask = row.getCell(++i).getLocalDateTimeCellValue();
+            LocalDateTime stopTask = row.getCell(++i).getLocalDateTimeCellValue();
+            Duration totalTime = Duration.parse((CharSequence) dataFormatter.formatCellValue(row.getCell(++i)));
+
+            Task task = new Task();
+            task.setTaskName(taskName);
+            task.setProjectName(projectName);
+            task.setIsClosed(isClose);
+            task.setStartTask(startTask);
+            task.setStopTask(stopTask);
+            task.setTotalTime(totalTime);
+            taskList.add(task);
+            }
+        return taskList;
+    }
+
+
 }
