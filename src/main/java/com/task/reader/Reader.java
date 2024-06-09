@@ -23,24 +23,28 @@ public class Reader {
 
         int n = sheet.getPhysicalNumberOfRows();
 
-        Row row = sheet.getRow(n-1);
-        int i = row.getFirstCellNum();
+        if (n == 1) {
+            return null;
+        } else {
+            Row row = sheet.getRow(n-1);
+            int i = row.getFirstCellNum();
 
-        String projectName = dataFormatter.formatCellValue(row.getCell(++i));
-        String taskName = dataFormatter.formatCellValue(row.getCell(++i));
-        Boolean isClose = row.getCell(++i).getBooleanCellValue();
-        LocalDateTime startTask = row.getCell(++i).getLocalDateTimeCellValue();
-        LocalDateTime stopTask = row.getCell(++i).getLocalDateTimeCellValue();
-        Duration totalTime = Duration.parse((CharSequence) dataFormatter.formatCellValue(row.getCell(++i)));
+            String projectName = dataFormatter.formatCellValue(row.getCell(++i));
+            String taskName = dataFormatter.formatCellValue(row.getCell(++i));
+            Boolean isClose = row.getCell(++i).getBooleanCellValue();
+            LocalDateTime startTask = row.getCell(++i).getLocalDateTimeCellValue();
+            LocalDateTime stopTask = row.getCell(++i).getLocalDateTimeCellValue();
+            Duration totalTime = Duration.parse((CharSequence) dataFormatter.formatCellValue(row.getCell(++i)));
 
-        lastTask.setTaskName(taskName);
-        lastTask.setProjectName(projectName);
-        lastTask.setIsClosed(isClose);
-        lastTask.setStartTask(startTask);
-        lastTask.setStopTask(stopTask);
-        lastTask.setTotalTime(totalTime);
+            lastTask.setTaskName(taskName);
+            lastTask.setProjectName(projectName);
+            lastTask.setIsClosed(isClose);
+            lastTask.setStartTask(startTask);
+            lastTask.setStopTask(stopTask);
+            lastTask.setTotalTime(totalTime);
 
-        return lastTask;
+            return lastTask;
+        }
     }
 
     public static List<Project> getAll(File file) throws IOException, InvalidFormatException {
