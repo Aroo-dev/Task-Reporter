@@ -3,210 +3,322 @@ Dokumentacja techniczna dla aplikacji TimeTracker
 
 Spis treści
 
-    Wprowadzenie
-    Opis funkcjonalności
-    Instalacja i konfiguracja
-    Użycie aplikacji
-        Komenda app start
-        Komenda app stop
-        Komenda app continue
-        Komenda app current
-        Komenda app list
-        Komenda app project
-        Komenda app report
-        Komenda app -h
-    Przykłady użycia
-    Struktura plików danych
-    Wymagania systemowe
-    Kontakt
+  Wprowadzenie
+  Opis funkcjonalności
+  Instalacja i konfiguracja
+  Użycie aplikacji
+      Komenda start
+      Komenda stop
+      Komenda continue
+      Komenda current
+      Komenda list
+      Komenda last
+      Komenda project
+      Komenda report
+      Komenda h
+  Struktura plików danych
+  Wymagania systemowe
+  Kontakt
 
 1. Wprowadzenie
 
-Firma IT Solution stworzyła aplikację TimeTracker, która umożliwia użytkownikom śledzenie czasu spędzonego nad różnymi projektami. Aplikacja jest przeznaczona do użytku w terminalu i pozwala na łatwe zarządzanie czasem pracy nad zadaniami.
+Firma IT Solution stworzyła aplikację TimeTracker, która umożliwia użytkownikom śledzenie czasu spędzonego nad różnymi projektami. Aplikacja jest przeznaczona do użytku w terminalu i pozwala na łatwe zarządzanie czasem pracy nad zadaniami i projektami.
 
 
 2. Opis funkcjonalności
 
 Aplikacja TimeTracker posiada następujące funkcjonalności:
 
-    Startowanie zadania: Rozpoczęcie śledzenia czasu dla danego zadania i projektu.
-    Zatrzymywanie zadania: Zakończenie śledzenia czasu dla aktualnie aktywnego zadania.
-    Wznawianie zadania: Wznowienie śledzenia czasu dla ostatniego zadania lub określonego zadania z historii.
-    Aktualne zadanie: Wyświetlenie informacji o aktualnie śledzonym zadaniu.
-    Lista ostatnich aktywności: Wyświetlenie pięciu ostatnich aktywności.
-    Lista projektów: Wyświetlenie wszystkich projektów wprowadzonych do tej pory.
-    Raport z projektów: Wyświetlenie sumarycznego czasu poświęconego na poszczególne projekty i zadania.
-    Pomoc: Wyświetlenie krótkiego opisu dostępnych komend.
+   Startowanie zadania: Rozpoczęcie śledzenia czasu dla danego zadania i projektu.
+   Zatrzymywanie zadania: Zakończenie śledzenia czasu dla aktualnie aktywnego zadania.
+   Wznawianie zadania: Wznowienie śledzenia czasu dla ostatniego zadania lub określonego zadania z historii.
+   Aktualne zadanie: Wyświetlenie informacji o aktualnie śledzonym zadaniu.
+   Lista aktywności: Wyświetlenie wszystkich aktywności.
+   Lista ostatnich aktywności: Wyświetlenie pięciu ostatnich aktywności.
+   Lista projektów: Wyświetlenie wszystkich projektów wprowadzonych do tej pory.
+   Raport z projektów: Wyświetlenie sumarycznego czasu poświęconego na poszczególne projekty i zadania.
+   Pomoc: Wyświetlenie krótkiego opisu dostępnych komend.
 
 3. Instalacja i konfiguracja
 
-    Pobierz aplikację TimeTracker z repozytorium Task-Reporter firmy IT Solution.
-    Rozpakuj pobrany plik do wybranego katalogu.
-    Otwórz terminal i przejdź do katalogu z aplikacją.
-    Uruchom aplikację.
+   Pobierz aplikację TimeTracker z repozytorium Task-Reporter firmy IT Solution.
+   Rozpakuj pobrany plik do wybranego katalogu.
+   Otwórz terminal i przejdź do katalogu z aplikacją.
+   Uruchom aplikację.
 
 4. Użycie aplikacji
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
    
-*Komenda app start
-Komenda app start służy do rozpoczęcia śledzenia czasu dla konkretnego zadania i projektu. Składnia komendy:
+  *Komenda start
 
-app start nazwaZadania nazwaProjektu
+   Komenda app start służy do rozpoczęcia śledzenia czasu dla konkretnego zadania i projektu.
+   Jeśli inne zadanie jest już uruchomione, zostanie ono automatycznie zatrzymane, a nowe zadanie zostanie dodane do pliku z aktualnym czasem rozpoczęcia.
+   
+   Składnia komendy:
 
-    nazwaZadania: Nazwa zadania, nad którym zaczynasz pracę.
-    nazwaProjektu: Nazwa projektu, do którego należy zadanie.
+        app start nazwaZadania nazwaProjektu
 
-Przykład: app start Raportowanie ProjektAlpha
+   nazwaZadania: Nazwa zadania, nad którym zaczynasz pracę.
+   nazwaProjektu: Nazwa projektu, do którego należy zadanie.
 
-Jeśli inne zadanie jest już uruchomione, zostanie ono automatycznie zatrzymane, a nowe zadanie zostanie dodane do pliku z aktualnym czasem rozpoczęcia.
-________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+   *Przykład użycia*
 
-*Komenda app stop
-Komenda app stop służy do zakończenia śledzenia czasu dla aktualnie aktywnego zadania. Składnia komendy:
+   Jest dzień 01.01.2000, godz. 10:00. Użytkownik wpisuje następującą komendę:
+   start Raportowanie ProjektAlpha
 
-app stop
+W pliku CSV zostaje utworzony nowy wiersz z nazwą zadania "Raportowanie", nazwą projektu "ProjektAlpa", godziną wykonania komendy start 10:00 i datą 01.01.2000. 
 
-Przykład: app stop
+   Jest godz. 10:47. Użytkownik wpisuje kolejną komendę:
+   start Korekta ProjektAlpha
 
-Po wpisaniu tej komendy do pliku zostanie dodana godzina zakończenia pracy nad bieżącym zadaniem.
-________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-*Komenda app continue
-Komenda app continue służy do wznowienia śledzenia czasu dla ostatniego zadania. Jeśli zostanie podana cyfra (maksymalnie 5), to wznawiane będzie odpowiednie zadanie z historii, w kolejności przeciwnej do chronologicznej. Składnia komendy:
-
-app continue [numer]
-
-    numer (opcjonalnie): Numer zadania do wznowienia, w kolejności przeciwnej do chronologicznej. W innym przypadku uruchomione tracker zostanie uruchomiony dla ostatniego zadania.
-
-Przykład: app continue 1
-
-W powyższym przykładzie, jeśli pracowano nad zadaniami 1, 2, 3, to zostanie wznowione zadanie 2.
-________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-
-*Komenda app current
-
-Komenda app current wyświetla nazwę zadania i projektu, dla którego jest aktywne śledzenie czasu. Jeśli nie ma żadnego aktywnego śledzenia, pojawia się komunikat:
-
-TimeTracker nie śledzi żadnego zadania.
-
-Przykład: app current
+   Użytkownik otrzymuje powiadomienie:
+   *Kończysz zadanie Raportowanie dla ProjektAlpha. Zaczynasz śledzenie czasu dla nowego zadania.*
+   
+W pliku CSV zostaje utworzony nowy wiersz z nazwą zadania "Korekta", nazwą projektu "ProjektAlpa", godziną wykonania komendy start "10:47" i datą "01.01.2000" a do poprzedniego wiersza w pliku CVS zostaje dopisana godzina zakończenia "10:47". 
 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-Komenda app list
+   *Komenda stop
+   
+   Komenda stop służy do zakończenia śledzenia czasu dla aktualnie aktywnego zadania. 
+   
+   Składnia komendy:
 
-Komenda app list pokazuje pięć ostatnich aktywności. Wyświetla nazwy zadań, nazwy projektów oraz godziny rozpoczęcia i zakończenia pracy nad zadaniami.
-Przykład:
+      stop
 
-bash
+   *Przykład użycia*
 
-app list
+   Jest godzina 11:15. Użytkownik wpisuje następującą komendę:
+   stop
 
-Komenda app project
+W pliku CSV zostaje dodana godzina zakończenia śledzenia czasu "11:15" dla wiersza z nazwą zadania "Korekta" i nazwą projektu "ProjektAlpa".
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-Komenda app project wyświetla wszystkie projekty, które zostały do tej pory wpisane do systemu.
-Przykład:
+   *Komenda continue
+   
+   Komenda continue służy do wznowienia śledzenia czasu dla ostatniego zadania. Jeśli zostanie podana cyfra (maksymalnie 5), to wznawiane będzie odpowiednie zadanie z historii, w kolejności przeciwnej do chronologicznej. 
+   
+   Składnia komendy:
 
-bash
+     continue [numer]
 
-app project
+   numer (opcjonalnie): Numer zadania do wznowienia, w kolejności przeciwnej do chronologicznej. W innym przypadku tracker zostanie uruchomiony dla ostatniego zadania.
 
-Komenda app report
+   *Przykład użycia*
 
-Komenda app report wyświetla raport z podziałem na projekty i zadania, pokazując sumaryczny czas poświęcony na każdy projekt i zadanie oraz łączny czas poświęcony na wszystkie zadania.
-Przykład:
+   Jest godzina 12:00. Użytkownik wpisuje komendę:
+   continue
 
-bash
+W pliku CSV zostaje skopiowany z wcześniejszego wiersza nazwa zadania "Korekta" i nazwa projektu "ProjektAlpha" i dopisana zostaje godzina rozpoczęcia śledzenia czasu 12:00.
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-app report
+   *Komenda current
 
-Komenda app -h
+   Komenda current wyświetla nazwę zadania i projektu, dla którego jest aktywne śledzenie czasu. 
+    
+   Składnia komendy:
 
-Komenda app -h wyświetla krótkie wyjaśnienie, co robi każda komenda. Jest to podpowiedź dla użytkownika.
-Przykład:
+    current
+   
+   Jeśli nie ma żadnego aktywnego śledzenia, pojawia się komunikat:
+     *TimeTracker nie śledzi żadnego zadania.*
 
-bash
+   *Przykład użycia*
 
-app -h
+   Użytkownik wpisuje komendę:
+   current
 
-5. Przykłady użycia
+Użytkownikowi wyświetla się w konsoli nazwa zadania "Korekta" i nazwa projektu "ProjektAlpha".
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-    Rozpoczęcie nowego zadania:
+   *Komenda list 
 
-    bash
+   Komenda list pokazuje pięć ostatnich aktywności. Wyświetla nazwy zadań, nazwy projektów oraz godziny rozpoczęcia i zakończenia pracy nad zadaniami.
 
-app start Raportowanie ProjektAlpha
+   Składnia komendy:
 
-Zakończenie aktualnego zadania:
+    list [date]
 
-bash
+   *Przykład użycia*
 
-app stop
+   Użytkownik wpisuje komendę:
+   list 01.01.2000
 
-Wznowienie ostatniego zadania:
+Użytkownikowi wyświetla się w konsoli lista złożona z jego zadań wykonywanych dnia 01.01.2000, składaająca się z nazwy zadania, nazwy projektu, godziny rozpoczęcia i ewentualnej godziny zakończenia:
 
-bash
+Korekta       ProjektAlpha   12:00  
+Korekta       ProjektAlpha   10:47  11:15
+Raportowanie  ProjektAlpha   10:00  10:47
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+ 
+   *Komenda last
 
-app continue
+   Komenda list pokazuje pięć ostatnich aktywności.
 
-Wznowienie przedostatniego zadania:
+   Składnia komendy:
 
-bash
+    last
 
-app continue 1
+   *Przykład użycia*
 
-Wyświetlenie aktualnie śledzonego zadania:
+   Użytkownik wpisuje komendę:
+   last 
 
-bash
+Użytkownikowi wyświetla się w konsoli lista złożona z jego ostatnich 5 zadań, składająca się z nazwy zadania i nazwy projektu:
+    
+Korekta       ProjektAlpha 
+Korekta       ProjektAlpha 
+Raportowanie  ProjektAlpha 
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-app current
+   *Komenda project
 
-Wyświetlenie pięciu ostatnich aktywności:
+   Komenda project wyświetla wszystkie projekty, które zostały do tej pory wpisane do systemu.
 
-bash
+   Składnia komendy:
 
-app list
+    project
+   
+   *Przykład użycia*
 
-Wyświetlenie wszystkich projektów:
+   Użytkownik wpisuje komendę:
+   project 
 
-bash
+Użytkownikowi wyświetla się w konsoli lista projektów nad którymi pracował, w przypadku naszego przykładu będzie to:
 
-app project
+ProjektAlpha
+   
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-Wyświetlenie raportu z projektów:
+   *Komenda report
 
-bash
+   Komenda report wyświetla raport z podziałem na projekty i zadania, pokazując sumaryczny czas poświęcony na każde zadanie i projekt oraz łączny czas poświęcony na wszystkie zadania.
 
-app report
+   Składnia komendy:
 
-Wyświetlenie pomocy:
+    report  /  report --nazwaProjektu  /  report ---01.01.2000
 
-bash
+   Do komendy report jest możliwość nałożenia filtra, by raport wyświetlał wyniki tylko dla danego projektu lub tylko dla danej daty.
+   
+   
+   *Przykłady użycia*
 
-    app -h
+Na potrzeby przykładu dodajmy, że uzytkownik pracował jeszcze nad następującymi zadaniami w dniu 02.01.2000:
+Wysyłanie       ProjektOmega   13:55  13:59
+Raportowanie    ProjektOmega   12:55  13:55
 
-6. Struktura plików danych
+a zadanie "Korekta" projektu "ProjektAlpha" zostało zakończone o 12:54.  
 
-Dane są przechowywane w pliku tekstowym (np. time_log.txt) w następującym formacie:
+__________________________________________________________________________________________________
+   Użytkownik wpisuje komendę:
+   report 
 
-nazwaZadania | nazwaProjektu | godzinaStartu | godzinaStopu
+Użytkownikowi wyświetla się w konsoli lista wszystkich zadań i projektów, nad którymi pracował. Listy są posegregowane a czasy zliczone dla poszczególnych zadań, projektów i dla całości.
 
-Przykład zawartości pliku:
+ProjektAlpha
+    Raportowanie    47min
+    Korekta         1h 22min
+                    Total: 2h 9min
 
-yaml
+ProjektOmega
+    Raportowanie    1h
+    Wysyłanie       4min
+                    Total: 1h 4min
 
-Raportowanie | ProjektAlpha | 2024-06-08 09:00:00 | 2024-06-08 10:30:00
-AnalizaDanych | ProjektBeta | 2024-06-08 11:00:00 | 2024-06-08 12:15:00
+                    Total: 3h 13min
+__________________________________________________________________________________________________
+   Użytkownik wpisuje komendę:
+   report --ProjektAlpha
 
-7. Wymagania systemowe
+Użytkownikowi wyświetla się w konsoli lista wszystkich zadań projektu ProjektAlpha:
 
-    System operacyjny: Windows, macOS, Linux
-    Python w wersji 3.6 lub nowszej
+ProjektAlpha
+    Raportowanie    47min
+    Korekta         1h 22min
+                    Total: 2h 9min
+                    
+__________________________________________________________________________________________________
+   Użytkownik wpisuje komendę:
+   report --02.01.2000                  
 
-8. Kontakt
+Użytkownikowi wyświetla się w konsoli lista wszystkich zadań i projektów, które wykonywał w dniu 02.01.2000:
+
+
+ProjektOmega
+    Raportowanie    1h
+    Wysyłanie       4min
+                    Total: 1h 4min
+        
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+  *Komenda h
+
+   Komenda h wyświetla użytkownikowi w konsoli krótkie podpowiedzi, co robi każda komenda. 
+   
+   Składnia komendy:
+    h  
+
+  *Przykład użycia*
+  
+   Użytkownik wpisuje komendę:
+   h       
+
+Użytkownikowi wyświetla się następująca podpowiedź w konsoli:
+    
+    -start <nazwaZadania> <nazwaProjektu>
+    Rozpocznij śledzenie czasu dla konkretnego zadania i projektu, zatrzymując aktywne zadanie.
+    
+    -stop
+    Zakończ śledzenie czasu dla aktualnie aktywnego zadania.
+    
+    -continue [numer]
+    Wznów śledzenie czasu dla ostatniego zadania lub zadania z historii, opcjonalnie podając numer.
+    
+    -current
+    Wyświetl nazwę zadania i projektu, dla którego jest aktywne śledzenie czasu.
+    
+    -list [date]
+    Pokaż pięć ostatnich aktywności z określonej daty.
+    
+    -last
+    Pokaż pięć ostatnich aktywności.
+    
+    -project
+    Wyświetl wszystkie projekty wpisane do systemu.
+    
+    -report,[--nazwaProjektu] [--data]
+    Wyświetl raport z podziałem na projekty i zadania z możliwością filtrowania po projekcie lub dacie.
+
+
+________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+5. Struktura plików danych
+
+   Dane są przechowywane w pliku tekstowym (np. time_log.txt) w następującym formacie:
+
+   nazwaZadania | nazwaProjektu | godzinaStartu | godzinaStopu
+
+  Przykład zawartości pliku:
+
+
+
+*******************************************************
+
+
+
+
+6. Wymagania systemowe
+
+   System operacyjny: Windows, macOS, Linux
+   JAVA w wersji 17 lub nowszej
+
+7. Kontakt
 
 W razie jakichkolwiek pytań lub problemów, prosimy o kontakt z działem wsparcia IT Solution:
 
-    Email: support@itsolution.com
-    Telefon: +48 123 456 789
+   Email: support@itsolution.com
+   Telefon: +48 123 456 789
+   Pn-Pt w godzinach 8-20
 
 IT Solution dziękuje za korzystanie z aplikacji TimeTracker!
