@@ -2,6 +2,8 @@ package com.task;
 
 import com.task.functions.AppStart;
 import com.task.model.Project;
+import com.task.last.LastTasks;
+import com.task.model.Task;
 import com.task.reader.Reader;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import picocli.CommandLine;
@@ -111,7 +113,14 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            System.out.println("Odwolanie do ostatnich 5 zadan");
+            java.util.List<Task> tasksList = new ArrayList<>();
+                File file = new File("fileTemp.xlsx");
+                try {
+                    tasksList = Reader.getAllTasks(file);
+                } catch (IOException | InvalidFormatException e) {
+                    throw new RuntimeException(e);
+                }
+                tasksList.forEach(System.out::println);
         }
     }
 
