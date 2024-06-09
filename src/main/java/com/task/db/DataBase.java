@@ -28,7 +28,8 @@ public class DataBase {
     }
 
     public Optional<Project> getProjectById(Long id) {
-        return projects.stream().filter(p -> p.getId().equals(id)).findFirst();
+     //   return projects.stream().filter(p -> p.getId().equals(id)).findFirst();
+    return null;
     }
 
     public void setProjects(List<Project> projects) {

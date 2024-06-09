@@ -1,4 +1,5 @@
 package com.task;
+import com.task.functions.AppStart;
 import com.task.report.*;
 import com.task.model.Project;
 import com.task.model.Task;
@@ -29,7 +30,8 @@ public class App implements Runnable {
         private String p;
         @Override
         public void run() {
-            System.out.println("Odwolanie do start");
+            AppStart start = new AppStart();
+            start.start(p, t);
         }
     }
     @Command(name = "report")

@@ -16,25 +16,25 @@ public class StopTask {
 
 
     public void stopTask(Long taskId) {
-        Optional<Project> project = dataBase.getAllProjects().stream()
-                .filter(p -> p.getTasks().stream().anyMatch(t -> t.getId().equals(taskId)))
-                .findFirst();
+        //Optional<Project> project = dataBase.getAllProjects().stream()
+        //        .filter(p -> p.getTasks().stream().anyMatch(t -> t.getId().equals(taskId)))
+         //       .findFirst();
 
-        if (project.isPresent()) {
-            Task task = project.get().getTasks().stream()
-                    .filter(t -> t.getId().equals(taskId))
-                    .findFirst()
-                    .orElse(null);
+       // if (project.isPresent()) {
+            //Task task = project.get().getTasks().stream()
+            //        .filter(t -> t.getId().equals(taskId))
+            //        .findFirst()
+            //        .orElse(null);
 
-            if (task != null) {
-                task.stop();
-                System.out.println("Task " + task.getTaskName() + " stopped.");
-            } else {
-                System.out.println("Task not found.");
-            }
-        } else {
-            System.out.println("Task not found in any project.");
+            //if (task != null) {
+            //    task.stop();
+             //   System.out.println("Task " + task.getTaskName() + " stopped.");
+         //   } else {
+          //      System.out.println("Task not found.");
+          //  }
+        //} else {
+         //   System.out.println("Task not found in any project.");
         }
     }
 
-}
+

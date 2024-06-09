@@ -18,7 +18,7 @@ public class AppStart {
             project = dataBase.importProject(projectName);
         }
 
-        Task task = new Task(taskName);
+        Task task = new Task(taskName,projectName);
         project.addTask(task);
 
         return task;
