@@ -13,6 +13,8 @@ import picocli.CommandLine.Option;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 
 @Command(name = "app", subcommands = {App.Start.class, App.Stop.class, App.List.class, App.Continue.class, App.Last.class,
@@ -120,7 +122,7 @@ public class App implements Runnable {
                 } catch (IOException | InvalidFormatException e) {
                     throw new RuntimeException(e);
                 }
-                tasksList.forEach(System.out::println);
+                tasksList.stream().sorted(Collections.reverseOrder()).limit(5).forEach(System.out::println);
         }
     }
 
