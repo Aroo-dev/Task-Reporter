@@ -43,16 +43,28 @@ public class App implements Runnable {
         private boolean all;
         @Option(names = "--project")
         private String project="";
+        @Option(names = "--master")
+        private boolean type;
         @Override
         public void run() {
             java.util.List<Project> projectList = new ArrayList<>();
-
-            File file = new File("fileTemp.xlsx");
-            try {
-                projectList = Reader.getAll(file);
-            } catch (IOException | InvalidFormatException e) {
-                throw new RuntimeException(e);
+            if(type) {
+                File file = new File("fileTemp.xlsx");
+                try {
+                    projectList = Reader.getAll(file);
+                } catch (IOException | InvalidFormatException e) {
+                    throw new RuntimeException(e);
+                }
             }
+            else {
+                File file = new File("file.xlsx");
+                try {
+                    projectList = Reader.getAll(file);
+                } catch (IOException | InvalidFormatException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
 
             if(all){
                 if(!project.isEmpty()){
