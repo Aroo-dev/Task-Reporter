@@ -1,6 +1,7 @@
 package com.task;
 
 import com.task.functions.AppStart;
+import com.task.functions.StopTask;
 import com.task.model.Project;
 import com.task.last.LastTasks;
 import com.task.model.Task;
@@ -88,7 +89,11 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            System.out.println("Odwolanie do stopa");
+            try {
+                StopTask.stop();
+            } catch (IOException | InvalidFormatException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

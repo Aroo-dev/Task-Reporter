@@ -1,7 +1,5 @@
 package com.task.functions;
 
-import com.task.db.DataBase;
-import com.task.model.Project;
 import com.task.model.Task;
 import com.task.reader.Reader;
 import com.task.writer.Writer;
@@ -12,11 +10,10 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 public class StopTask {
 
-    public static void stopTask() throws IOException, InvalidFormatException {
+    public static void stop() throws IOException, InvalidFormatException {
         File file = new File("file.xlsx");
 
         Task lastTask = Reader.getLast(file);
