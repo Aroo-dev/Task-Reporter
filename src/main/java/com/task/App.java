@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.ListIterator;
 
 
 @Command(name = "app", subcommands = {App.Start.class, App.Stop.class, App.List.class, App.Continue.class, App.Last.class,
@@ -127,7 +128,11 @@ public class App implements Runnable {
                 } catch (IOException | InvalidFormatException e) {
                     throw new RuntimeException(e);
                 }
-                tasksList.stream().sorted(Collections.reverseOrder()).limit(5).forEach(System.out::println);
+            ListIterator i = tasksList.listIterator(tasksList.size());
+            while (i.previousIndex() != tasksList.size() - 4) {
+                Object e = i.previous();
+                System.out.print(e + " ");
+            }
         }
     }
 
