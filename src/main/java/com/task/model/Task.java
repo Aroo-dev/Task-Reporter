@@ -13,9 +13,10 @@ public class Task {
     private LocalDateTime stopTask;
     private Duration totalTime;
 
-    public Task( String taskName) {
+    public Task( String taskName, String projectName) {
 
         this.taskName = taskName;
+        this.projectName = projectName;
         this.startTask = LocalDateTime.now();
         totalTime = Duration.ZERO;
     }
