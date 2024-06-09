@@ -30,8 +30,11 @@ public class App implements Runnable {
         private String p;
         @Override
         public void run() {
-            AppStart start = new AppStart();
-            start.start(p, t);
+            try {
+                AppStart.start(p,t);
+            } catch (IOException | InvalidFormatException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
     @Command(name = "report")
