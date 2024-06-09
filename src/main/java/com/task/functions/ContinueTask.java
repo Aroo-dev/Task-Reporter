@@ -16,10 +16,10 @@ public class ContinueTask {
         File file = new File("file.xlsx");
         Task last = Reader.getLast(file);
         if (last == null){
-            throw new RuntimeException("There's no task to be continued");
+            System.out.println("There's no task to be continued");;
         }
         if (!last.isClosed()){
-            throw new RuntimeException("Task is already opened - " + last.getTaskName());
+            System.out.println("Task is already opened - " + last.getTaskName());
         }else {
             Task task = new Task(last.getTaskName(), last.getProjectName());
             List<Task> task1 = List.of(task);
