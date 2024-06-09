@@ -1,7 +1,6 @@
-package writer;
+package com.task.writer;
 
-import BusinessEntiry.BusinessEntity;
-import model.Task;
+import  com.task.model.Task;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -104,7 +103,7 @@ public class Writer {
                     rowNum,
                     entity.getProjectName(),
                     entity.getTaskName(),
-                    entity.getIsClose(),
+                    entity.isClosed(),
                     entity.getStartTask(),
                     entity.getStopTask(),
                     entity.getTotalTime()});
