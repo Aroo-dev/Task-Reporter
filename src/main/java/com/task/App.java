@@ -19,7 +19,7 @@ public class App implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("In Utility");
+        System.out.println("Command missing. Run command 'h' to check list of available commands. ");
     }
 
     @Command(name = "start", sortOptions = false, sortSynopsis = false)
