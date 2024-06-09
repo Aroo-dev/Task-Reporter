@@ -131,7 +131,7 @@ public class App implements Runnable {
             ListIterator i = tasksList.listIterator(tasksList.size());
             while (i.previousIndex() != tasksList.size() - 4) {
                 Object e = i.previous();
-                System.out.print(e + " ");
+                System.out.println(e + " ");
             }
         }
     }
