@@ -129,7 +129,7 @@ public class App implements Runnable {
                     throw new RuntimeException(e);
                 }
             for(int i= tasksList.size()-1; i>tasksList.size()-5; i--){
-
+                System.out.println(tasksList.get(i));
             }
         }
     }
