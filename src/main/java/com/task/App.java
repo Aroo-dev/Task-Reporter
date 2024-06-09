@@ -128,7 +128,7 @@ public class App implements Runnable {
                 } catch (IOException | InvalidFormatException e) {
                     throw new RuntimeException(e);
                 }
-            for(int i= tasksList.size()-1; i>tasksList.size()-5; i--){
+            for(int i= tasksList.size()-5; i>tasksList.size(); i++){
                 System.out.println(tasksList.get(i));
             }
         }
