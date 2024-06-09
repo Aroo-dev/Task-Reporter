@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Project {
-    private static Long id = 0L;
     private String name;
     private List<Task> tasks = new ArrayList<>();
 
@@ -14,14 +13,7 @@ public class Project {
 
     public Project( String name) {
         this.name = name;
-        id++;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-
 
     public String getName() {
         return name;
@@ -43,7 +35,6 @@ public class Project {
     @Override
     public String toString() {
         return "Project: "
-                + "id = " + id
                 + ", name = " + name;
     }
 }

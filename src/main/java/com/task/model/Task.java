@@ -4,10 +4,11 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Task {
-
-    private Long id;
-    private static Long counter = 0L;
     private String taskName;
+
+
+
+    private String projectName;
     private LocalDateTime startTask;
     private LocalDateTime stopTask;
     private Duration totalTime;
@@ -16,20 +17,10 @@ public class Task {
 
         this.taskName = taskName;
         this.startTask = LocalDateTime.now();
-        counter++;
-        id = counter;
         totalTime = Duration.ZERO;
     }
 
     public Task() {
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public static void setCounter(Long counter) {
-        Task.counter = counter;
     }
 
     public void setTaskName(String taskName) {
@@ -48,12 +39,12 @@ public class Task {
         this.totalTime = totalTime;
     }
 
-    public static Long getCounter() {
-        return counter;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public Long getId() {
-        return id;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public String getTaskName() {

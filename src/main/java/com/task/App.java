@@ -158,6 +158,7 @@ public class App implements Runnable {
                     "    command 'continue' - syntax 'continue' - without arguments, continuation of last task\n" +
                     "    command 'current' - syntax 'current' - without arguments, showing of current task\n" +
                     "    command 'list'\n" +
+                    "    command 'last' - syntax 'last' - without arguments, showing of current task\n" +
                     "    command 'project'\n" +
                     "    command 'report' - syntax 'report -all' - report for all projects\n" +
                     "    command 'report' - syntax 'report -all --project=<project_name>' - report for chosen project\n" +
