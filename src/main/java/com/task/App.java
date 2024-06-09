@@ -1,6 +1,7 @@
 package com.task;
 
 import com.task.functions.AppStart;
+import com.task.functions.ContinueTask;
 import com.task.functions.StopTask;
 import com.task.model.Project;
 import com.task.last.LastTasks;
@@ -103,7 +104,11 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            System.out.println("Odwolanie do continue");
+            try {
+                ContinueTask.continueTask();
+            } catch (IOException | InvalidFormatException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
