@@ -31,8 +31,8 @@ Aplikacja TimeTracker posiada następujące funkcjonalności:
 
    Startowanie zadania: Rozpoczęcie śledzenia czasu dla danego zadania i projektu.
    Zatrzymywanie zadania: Zakończenie śledzenia czasu dla aktualnie aktywnego zadania.
-   Wznawianie zadania: Wznowienie śledzenia czasu dla ostatniego zadania lub określonego zadania z historii.
-   Aktualne zadanie: Wyświetlenie informacji o aktualnie śledzonym zadaniu.
+   Wznawianie zadania: Wznowienie śledzenia czasu dla ostatniego zadania.
+   Aktualne zadanie: Wyświetlenie informacji o aktualnie zadaniu.
    Lista aktywności: Wyświetlenie wszystkich aktywności.
    Lista ostatnich aktywności: Wyświetlenie pięciu ostatnich aktywności.
    Lista projektów: Wyświetlenie wszystkich projektów wprowadzonych do tej pory.
@@ -66,15 +66,12 @@ ________________________________________________________________________________
    Jest dzień 01.01.2000, godz. 10:00. Użytkownik wpisuje następującą komendę:
    start Raportowanie ProjektAlpha
 
-W pliku CSV zostaje utworzony nowy wiersz z nazwą zadania "Raportowanie", nazwą projektu "ProjektAlpa", godziną wykonania komendy start 10:00 i datą 01.01.2000. 
+W pliku xlsx zostaje utworzony nowy wiersz z nazwą zadania "Raportowanie", nazwą projektu "ProjektAlpa", godziną wykonania komendy start 10:00 i datą 01.01.2000. 
 
    Jest godz. 10:47. Użytkownik wpisuje kolejną komendę:
    start Korekta ProjektAlpha
-
-   Użytkownik otrzymuje powiadomienie:
-   *Kończysz zadanie Raportowanie dla ProjektAlpha. Zaczynasz śledzenie czasu dla nowego zadania.*
    
-W pliku CSV zostaje utworzony nowy wiersz z nazwą zadania "Korekta", nazwą projektu "ProjektAlpa", godziną wykonania komendy start "10:47" i datą "01.01.2000" a do poprzedniego wiersza w pliku CVS zostaje dopisana godzina zakończenia "10:47". 
+W pliku xlsx zostaje utworzony nowy wiersz z nazwą zadania "Korekta", nazwą projektu "ProjektAlpa", godziną wykonania komendy start "10:47" i datą "01.01.2000" a do poprzedniego wiersza w pliku xlsx zostaje dopisana godzina zakończenia "10:47". 
 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
@@ -91,37 +88,32 @@ ________________________________________________________________________________
    Jest godzina 11:15. Użytkownik wpisuje następującą komendę:
    stop
 
-W pliku CSV zostaje dodana godzina zakończenia śledzenia czasu "11:15" dla wiersza z nazwą zadania "Korekta" i nazwą projektu "ProjektAlpa".
+W pliku xlsx zostaje dodana godzina zakończenia śledzenia czasu "11:15" dla wiersza z nazwą zadania "Korekta" i nazwą projektu "ProjektAlpa".
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
    *Komenda continue
    
-   Komenda continue służy do wznowienia śledzenia czasu dla ostatniego zadania. Jeśli zostanie podana cyfra (maksymalnie 5), to wznawiane będzie odpowiednie zadanie z historii, w kolejności przeciwnej do chronologicznej. 
+   Komenda continue służy do wznowienia śledzenia czasu dla ostatniego zadania.
    
    Składnia komendy:
 
-     continue [number]
-
-   numer (opcjonalnie): Numer zadania do wznowienia, w kolejności przeciwnej do chronologicznej. W innym przypadku tracker zostanie uruchomiony dla ostatniego zadania.
+     continue 
 
    *Przykład użycia*
 
    Jest godzina 12:00. Użytkownik wpisuje komendę:
    continue
 
-W pliku CSV zostaje skopiowany z wcześniejszego wiersza nazwa zadania "Korekta" i nazwa projektu "ProjektAlpha" i dopisana zostaje godzina rozpoczęcia śledzenia czasu 12:00.
+W pliku xlsx zostaje skopiowany z wcześniejszego wiersza nazwa zadania "Korekta" i nazwa projektu "ProjektAlpha" i dopisana zostaje godzina rozpoczęcia śledzenia czasu 12:00.
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
    *Komenda current
 
-   Komenda current wyświetla nazwę zadania i projektu, dla którego jest aktywne śledzenie czasu. 
+   Komenda current wyświetla nazwę zadania i projektu dla ostatniej aktywności.
     
    Składnia komendy:
 
     current
-   
-   Jeśli nie ma żadnego aktywnego śledzenia, pojawia się komunikat:
-     *TimeTracker nie śledzi żadnego zadania.*
 
    *Przykład użycia*
 
@@ -137,14 +129,14 @@ ________________________________________________________________________________
 
    Składnia komendy:
 
-    list [date]
+    list 
 
    *Przykład użycia*
 
    Użytkownik wpisuje komendę:
-   list 01.01.2000
+   list 
 
-Użytkownikowi wyświetla się w konsoli lista złożona z jego zadań wykonywanych dnia 01.01.2000, składaająca się z nazwy zadania, nazwy projektu, godziny rozpoczęcia i ewentualnej godziny zakończenia:
+Użytkownikowi wyświetla się w konsoli lista złożona z jego zadań, składająca się z nazwy zadania, nazwy projektu, godziny rozpoczęcia i ewentualnej godziny zakończenia:
 
 Korekta       ProjektAlpha   12:00  
 Korekta       ProjektAlpha   10:47  11:15
@@ -196,14 +188,14 @@ ________________________________________________________________________________
 
    Składnia komendy:
 
-    report  /  report --nazwaProjektu  /  report ---date
+    report -all /  report -p [nazwaProjektu] 
 
-   Do komendy report jest możliwość nałożenia filtra, by raport wyświetlał wyniki tylko dla danego projektu lub tylko dla danej daty.
+   Do komendy report jest możliwość nałożenia filtra, by raport wyświetlał wyniki tylko dla danego projektu.
    
    
    *Przykłady użycia*
 
-Na potrzeby przykładu dodajmy, że uzytkownik pracował jeszcze nad następującymi zadaniami w dniu 02.01.2000:
+Na potrzeby przykładu dodajmy, że uzytkownik pracował jeszcze nad następującymi zadaniami:
 Wysyłanie       ProjektOmega   13:55  13:59
 Raportowanie    ProjektOmega   12:55  13:55
 
@@ -211,7 +203,7 @@ a zadanie "Korekta" projektu "ProjektAlpha" zostało zakończone o 12:54.
 
 __________________________________________________________________________________________________
    Użytkownik wpisuje komendę:
-   report 
+   report -all
 
 Użytkownikowi wyświetla się w konsoli lista wszystkich zadań i projektów, nad którymi pracował. Listy są posegregowane a czasy zliczone dla poszczególnych zadań, projektów i dla całości.
 
@@ -225,31 +217,17 @@ ProjektOmega
     Wysyłanie       4min
                     Total: 1h 4min
 
-                    Total: 3h 13min
 __________________________________________________________________________________________________
    Użytkownik wpisuje komendę:
-   report --ProjektAlpha
+   report -p ProjektAlpha
 
 Użytkownikowi wyświetla się w konsoli lista wszystkich zadań projektu ProjektAlpha:
 
 ProjektAlpha
     Raportowanie    47min
     Korekta         1h 22min
-                    Total: 2h 9min
-                    
-__________________________________________________________________________________________________
-   Użytkownik wpisuje komendę:
-   report --02.01.2000                  
-
-Użytkownikowi wyświetla się w konsoli lista wszystkich zadań i projektów, które wykonywał w dniu 02.01.2000:
-
-
-ProjektOmega
-    Raportowanie    1h
-    Wysyłanie       4min
-                    Total: 1h 4min
-        
-________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+                    Total: 2h 9min   
+_______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
   *Komenda h
 
@@ -264,48 +242,31 @@ ________________________________________________________________________________
    h       
 
 Użytkownikowi wyświetla się następująca podpowiedź w konsoli:
-    
-    -start <nazwaZadania> <nazwaProjektu>
-    Rozpocznij śledzenie czasu dla konkretnego zadania i projektu, zatrzymując aktywne zadanie.
-    
-    -stop
-    Zakończ śledzenie czasu dla aktualnie aktywnego zadania.
-    
-    -continue [numer]
-    Wznów śledzenie czasu dla ostatniego zadania lub zadania z historii, opcjonalnie podając numer.
-    
-    -current
-    Wyświetl nazwę zadania i projektu, dla którego jest aktywne śledzenie czasu.
-    
-    -list [date]
-    Pokaż pięć ostatnich aktywności z określonej daty.
-    
-    -last
-    Pokaż pięć ostatnich aktywności.
-    
-    -project
-    Wyświetl wszystkie projekty wpisane do systemu.
-    
-    -report,[--nazwaProjektu] [--data]
-    Wyświetl raport z podziałem na projekty i zadania z możliwością filtrowania po projekcie lub dacie.
 
+    Aplication use:\n" +
+                        "    command 'start' - syntax: 'start -t=<task_name> -p=<project_name>' - starting of task reporting \n" +
+                        "    command stop - syntax: 'stop' - without arguments, stopping current task \n" +
+                        "    command 'continue' - syntax 'continue' - without arguments, continuation of last task\n" +
+                        "    command 'current' - syntax 'current' - without arguments, showing of current task\n" +
+                        "    command 'list'\n" +
+                        "    command 'last' - syntax 'last' - without arguments, showing last 5 tasks\n" +
+                        "    command 'project'\n" +
+                        "    command 'report' - syntax 'report -all' - report for all projects\n" +
+                        "    command 'report' - syntax 'report -all --project=<project_name>' - report for chosen project\n" +
+                        "    command 'h' - displaying help");
+    
 
 ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
 5. Struktura plików danych
 
-   Dane są przechowywane w pliku tekstowym (np. time_log.txt) w następującym formacie:
+   Dane są przechowywane w pliku xlsx (np. file.xlsx) w następującym formacie:
 
-   nazwaZadania | nazwaProjektu | godzinaStartu | godzinaStopu
+   index | nazwaProjektu | nazwaZadania | czasRozpoczęcia | czasZakończenia | czasTrwania
 
   Przykład zawartości pliku:
-
-
-
-*******************************************************
-
-
+  patrz file.xlsx w repozytorium.
 
 
 6. Wymagania systemowe
