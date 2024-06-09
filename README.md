@@ -56,7 +56,7 @@ ________________________________________________________________________________
    
    Składnia komendy:
 
-        app start nazwaZadania nazwaProjektu
+        start nazwaZadania nazwaProjektu
 
    nazwaZadania: Nazwa zadania, nad którym zaczynasz pracę.
    nazwaProjektu: Nazwa projektu, do którego należy zadanie.
@@ -100,7 +100,7 @@ ________________________________________________________________________________
    
    Składnia komendy:
 
-     continue [numer]
+     continue [number]
 
    numer (opcjonalnie): Numer zadania do wznowienia, w kolejności przeciwnej do chronologicznej. W innym przypadku tracker zostanie uruchomiony dla ostatniego zadania.
 
@@ -196,7 +196,7 @@ ________________________________________________________________________________
 
    Składnia komendy:
 
-    report  /  report --nazwaProjektu  /  report ---01.01.2000
+    report  /  report --nazwaProjektu  /  report ---date
 
    Do komendy report jest możliwość nałożenia filtra, by raport wyświetlał wyniki tylko dla danego projektu lub tylko dla danej daty.
    
