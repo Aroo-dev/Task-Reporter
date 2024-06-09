@@ -118,7 +118,7 @@ public class App implements Runnable {
         @Override
         public void run() {
             java.util.List<Task> tasksList = new ArrayList<>();
-            File file = new File("fileTemp.xlsx");
+            File file = new File("file.xlsx");
             try {
                 tasksList = Reader.getAllTasks(file);
             } catch (IOException | InvalidFormatException e) {
@@ -137,7 +137,7 @@ public class App implements Runnable {
         @Override
         public void run() {
             java.util.List<Task> tasksList = new ArrayList<>();
-                File file = new File("fileTemp.xlsx");
+                File file = new File("file.xlsx");
                 try {
                     tasksList = Reader.getAllTasks(file);
                 } catch (IOException | InvalidFormatException e) {
@@ -154,7 +154,7 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            File file = new File("fileTemp.xlsx");
+            File file = new File("file.xlsx");
             Task task = new Task();
             try {
                 task = Reader.getLast(file);
