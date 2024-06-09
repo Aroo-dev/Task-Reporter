@@ -14,7 +14,7 @@ class AppStartTest {
 
     @Test
     void startToEmptyFile() throws IOException, InvalidFormatException {
-        AppStart.start("test1","projekt1");
+        AppStart.start("test12","projekt1");
 
     }
     @Test
