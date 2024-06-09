@@ -7,15 +7,15 @@ Spis treści
   Opis funkcjonalności
   Instalacja i konfiguracja
   Użycie aplikacji
-      Komenda start
-      Komenda stop
-      Komenda continue
-      Komenda current
-      Komenda list
-      Komenda last
-      Komenda project
-      Komenda report
-      Komenda h
+   Komenda start
+   Komenda stop
+   Komenda continue
+   Komenda current
+   Komenda list
+   Komenda last
+   Komenda project
+   Komenda report
+   Komenda h
   Struktura plików danych
   Wymagania systemowe
   Kontakt
