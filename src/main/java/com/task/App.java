@@ -112,7 +112,14 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            System.out.println("Odwolanie do listy");
+            java.util.List<Task> tasksList = new ArrayList<>();
+            File file = new File("fileTemp.xlsx");
+            try {
+                tasksList = Reader.getAllTasks(file);
+            } catch (IOException | InvalidFormatException e) {
+                throw new RuntimeException(e);
+            }
+            tasksList.forEach(System.out::println);
         }
     }
 
@@ -128,7 +135,7 @@ public class App implements Runnable {
                 } catch (IOException | InvalidFormatException e) {
                     throw new RuntimeException(e);
                 }
-            for(int i= tasksList.size()-5; i>tasksList.size(); i++){
+            for(int i= tasksList.size()-1; i>tasksList.size()-6; i--){
                 System.out.println(tasksList.get(i));
             }
         }
@@ -139,7 +146,14 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            System.out.println("Odwolanie do aktulnego zadania");
+            File file = new File("fileTemp.xlsx");
+            Task task = new Task();
+            try {
+                task = Reader.getLast(file);
+            } catch (IOException | InvalidFormatException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(task);
         }
     }
 
