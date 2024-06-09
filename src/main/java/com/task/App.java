@@ -1,12 +1,19 @@
 package com.task;
-
+import com.task.report.*;
+import com.task.model.Project;
+import com.task.model.Task;
+import com.task.report.Report;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Command(name = "app", subcommands = {App.Start.class, App.Stop.class, App.List.class, App.Continue.class, App.Last.class,
-        App.Current.class, App.Help.class}, separator = " ")
+        App.Current.class, App.Help.class, App.Report.class}, separator = " ")
 public class App implements Runnable {
 
     @Override
@@ -23,6 +30,75 @@ public class App implements Runnable {
         @Override
         public void run() {
             System.out.println("Odwolanie do start");
+        }
+    }
+    @Command(name = "report")
+    static class Report implements Runnable {
+        @Option(names = "-all")
+        private boolean all;
+        @Option(names = "--project")
+        private String project="";
+        @Override
+        public void run() {
+            java.util.List<Project> projectList = new ArrayList<>();
+            Project project1 = new Project("Project1");
+
+            Task project1Task1 = new Task("Project 1 Task 1");
+            project1Task1.setTotalTime(Duration.ofMinutes(10));
+
+            Task project1Task2 = new Task("Project 1 Task 2");
+            project1Task2.setTotalTime(Duration.ofMinutes(20));
+
+            Task project1Task3 = new Task("Project 1 Task 3");
+            project1Task3.setTotalTime(Duration.ofMinutes(30));
+
+            Task project1Task4 = new Task("Project 1 Task 1");
+            project1Task4.setTotalTime(Duration.ofMinutes(10));
+
+            Task project1Task5 = new Task("Project 1 Task 2");
+            project1Task5.setTotalTime(Duration.ofMinutes(20));
+
+            Task project1Task6 = new Task("Project 1 Task 3");
+            project1Task6.setTotalTime(Duration.ofMinutes(30));
+
+            project1.addTask(project1Task1);
+            project1.addTask(project1Task2);
+            project1.addTask(project1Task3);
+            project1.addTask(project1Task4);
+            project1.addTask(project1Task5);
+            project1.addTask(project1Task6);
+
+            Project project2 = new Project("Project2");
+
+            Task project2Task1 = new Task("Project 2 Task 1");
+            project2Task1.setTotalTime(Duration.ofMinutes(120));
+
+            Task project2Task2 = new Task("Project 2 Task 2");
+            project2Task2.setTotalTime(Duration.ofMinutes(30));
+
+            Task project2Task3 = new Task("Project 2 Task 2");
+            project2Task3.setTotalTime(Duration.ofMinutes(30));
+
+            Task project2Task4 = new Task("Project 2 Task 2");
+            project2Task4.setTotalTime(Duration.ofMinutes(30));
+
+            project2.addTask(project2Task1);
+            project2.addTask(project2Task2);
+            project2.addTask(project2Task3);
+            project2.addTask(project2Task4);
+
+            projectList.add(project1);
+            projectList.add(project2);
+            if(all==true){
+                if(!project.isEmpty() & all==true){
+                    com.task.report.Report.printReportProject(projectList,project);
+                }
+                else {
+                    com.task.report.Report.printReportALL(projectList);
+                }
+            }
+
+
         }
     }
 
@@ -76,21 +152,22 @@ public class App implements Runnable {
 
         @Override
         public void run() {
-            System.out.println("Uzycie aplikacji\n" +
-                    "    Komenda start - skladnia: 'start -t=<nazwa_zadania> -p=<nazwa_projektu>'\n" +
-                    "    Komenda stop - skladnia: 'stop' - bez argumentow, zatrzymanie aktualnego zadania \n" +
-                    "    Komenda continue - skladnia 'continue' - bez argumentow, kontynuacja ostatniego zadania\n" +
-                    "    Komenda current - skladnia 'current' - bez argumentow, wyswietlenie aktualnego zadania\n" +
-                    "    Komenda list\n" +
-                    "    Komenda project - skladnia 'project' - bez argumentow, lista dostepnych projektow\n" +
-                    "    Komenda report\n" +
-                    "    Komenda h - wyswietlenie pomocy");
+            System.out.println("Aplication use:\n" +
+                    "    command 'start' - syntax: 'start -t=<task_name> -p=<project_name>' - starting of task reporting \n" +
+                    "    command stop - syntax: 'stop' - without arguments, stopping current task \n" +
+                    "    command 'continue' - syntax 'continue' - without arguments, continuation of last task\n" +
+                    "    command 'current' - syntax 'current' - without arguments, showing of current task\n" +
+                    "    command 'list'\n" +
+                    "    command 'project'\n" +
+                    "    command 'report' - syntax 'report -all' - report for all projects\n" +
+                    "    command 'report' - syntax 'report -all --project=<project_name>' - report for chosen project\n" +
+                    "    command 'h' - displaying help");
         }
     }
 
 
     public static void main(String[] args) {
-        System.out.println("\nSystem raportowania godzin projektowych MWO2023/2024");
+        System.out.println("\nProject hours reporting system MWO2023/2024");
         System.out.println("-----------------------------------------------------\n");
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
