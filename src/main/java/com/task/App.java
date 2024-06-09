@@ -128,10 +128,8 @@ public class App implements Runnable {
                 } catch (IOException | InvalidFormatException e) {
                     throw new RuntimeException(e);
                 }
-            ListIterator i = tasksList.listIterator(tasksList.size());
-            while (i.previousIndex() != tasksList.size() - 4) {
-                Object e = i.previous();
-                System.out.println(e);
+            for(int i= tasksList.size()-1; i>tasksList.size()-5; i--){
+
             }
         }
     }
